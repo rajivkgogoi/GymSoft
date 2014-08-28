@@ -3,7 +3,7 @@
 
 
 // mongoose setup
-require('./data/models/product');
+require('./data/models/vendor');
  
 var express = require( 'express' );
 var routes  = require( './routes' );
