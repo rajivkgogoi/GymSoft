@@ -1,0 +1,48 @@
+<% layout( 'layout' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<div id="header" style="background-color:LightSteelBlue ;">
+	<form action="/vendor/create" align=Left  method="post" accept-charset="utf-8" align=center>
+	 <fieldset>
+	  <p>
+	   <b>Center Name:</b><input type="text" size="100" placeholder="Mandatory Center name...." name="centername" required />
+	  Enter Center Name(60 chars) 
+	  </p>
+	  <p> <b>Address :</b></p>
+	  <textarea rows="8" cols="100" name="address" placeholder="Enter Address here..."></textarea>
+	  Address (1000 chars)
+	  </p>
+	  
+	  <p>
+	   <b>Email:</b><input type="email" size="40" name="email" placeholder=" your email address..."/>
+	  Email(60 chars)
+	  </p>
+	   <p>
+	   <b>Mobile:</b><input type="tel" size="40" name="mobilenumber" placeholder=" your mobile number..."/>
+	  contact number(60 chars)
+	  </p>  
+	 	  
+	  <p>
+	   <b>Owner :</b><input type="text" size="10" name="owner" />
+	  Enter owner(10 chars)
+	  </p>
+	  
+	   <p>
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	  <script>
+	  $(function() {
+		$( "#datepicker1" ).datepicker();
+		$( "#datepicker2" ).datepicker();
+	  });
+	  </script>
+	    <b>Start Date:</b><input type="text"  id="datepicker1"  name="startDate" />
+	 </p>
+	 <p> <b>Description :</b></p>
+	  <textarea rows="8" cols="100" name="description" placeholder="Enter description here..."></textarea>
+	  Description (1000 chars)
+	  </p>
+	 <input type="submit", value="Submit" />
+</div>
+

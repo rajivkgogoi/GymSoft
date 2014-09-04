@@ -12,5 +12,7 @@ description: String,
 });
 var P = mongoose.model('Vendor', VendorSchema);
 console.log("DEBUG:/MODEL/vendor");
-mongoose.connect( 'mongodb://localhost/Vendor' );
+mongoose.connect( 'mongodb://localhost/GymSoft');
+console.log("DEBUG:/MODEL/vendor");
 module.exports = P;
+console.log("DEBUG:/MODEL/vendor");
