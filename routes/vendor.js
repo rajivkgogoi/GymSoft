@@ -141,7 +141,7 @@ module.exports = function(app)
 		
 		
 		}
-		res.redirect('/session/new')
+		res.redirect('/session/user')
 		
 		});
 	});
