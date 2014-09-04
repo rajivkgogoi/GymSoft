@@ -1,4 +1,3 @@
-var users = require('../data/user');
 var Vendors = require('../data/models/vendor');
 var moment = require('moment')
 fs = require('fs');
@@ -123,10 +122,10 @@ module.exports = function(app)
 	
 		if (req.body.centername) {
 			
-		var thor = new Product({
+		var thor = new Vendors({
 			  
 			  vendorname: req.body.centername,
-			  vendornumber: req.body.,
+			  vendornumber: lpost,
 			  address: req.body.address,
 			  email: req.body.email,
 			  phonenumber: req.body.mobilenumber,
