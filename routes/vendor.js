@@ -128,6 +128,7 @@ module.exports = function(app)
 			  vendornumber: lpost,
 			  address: req.body.address,
 			  email: req.body.email,
+			  password: req.body.password,
 			  phonenumber: req.body.mobilenumber,
 			  description: req.description
 			

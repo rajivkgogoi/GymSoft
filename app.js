@@ -39,8 +39,11 @@ if ( 'development' == app.get( 'env' )) {
 // Routes are separeted and kept in a different route folder having the GET/POSTs
 //app.get('/', routes.index);
 require('./routes/index')(app);
+require('./routes/users')(app);
 require('./routes/session')(app);
 require('./routes/vendor')(app);
+
+
 http.createServer( app ).listen( app.get( 'port' ), function(){
   console.log( 'Express server listening on port ' + app.get( 'port' ));
 } );
