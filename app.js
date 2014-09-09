@@ -46,7 +46,7 @@ require('./routes/index')(app);
 require('./routes/users')(app);
 require('./routes/session')(app);
 require('./routes/vendor')(app);
-//require('./routes/equipment')(app)
+require('./routes/equipment')(app)
 
 
 http.createServer( app ).listen( app.get( 'port' ), function(){
