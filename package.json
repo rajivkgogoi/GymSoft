@@ -6,7 +6,7 @@
   "contributors": [
     {
       "name": "Sanchayan",
-      "email": "sanchayan@microsoft.com"
+      "email": "sanchayan@abc.com"
     }
   ],
   "main": "./app.js",
@@ -35,4 +35,9 @@
     "errorhandler": "~1.2.0"
   },
   "devDependencies": {}
+  
+  "repository": {
+  "type": "git",
+  "url": "git:https://github.com/rajivkgogoi/GymSoft/tree/gym_owner_regisin_login"
+}
 }

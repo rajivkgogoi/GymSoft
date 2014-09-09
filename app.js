@@ -25,7 +25,6 @@ app.set( 'view engine', 'ejs' );
 app.use( favicon('Desert.jpg'));
 app.use( logger( 'dev' ));
 app.use(bodyParser());
-//app.use( express.json());
 //app.use( express.urlencoded());
 app.use( methodOverride());
 	//Session maintainence stuffs
@@ -43,11 +42,11 @@ if ( 'development' == app.get( 'env' )) {
 }
 
 // Routes are separeted and kept in a different route folder having the GET/POSTs
-//app.get('/', routes.index);
 require('./routes/index')(app);
 require('./routes/users')(app);
 require('./routes/session')(app);
 require('./routes/vendor')(app);
+require('./routes/equipment')(app)
 
 
 http.createServer( app ).listen( app.get( 'port' ), function(){
