@@ -5,8 +5,8 @@
   "description": "A Gym software",
   "contributors": [
     {
-      "name": "Justin Beckwith",
-      "email": "justbe@microsoft.com"
+      "name": "Sanchayan",
+      "email": "sanchayan@microsoft.com"
     }
   ],
   "main": "./app.js",
