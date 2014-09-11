@@ -1,4 +1,5 @@
 var Equipment = require('../data/models/gym_equipment');
+var Vendors = require('../data/models/vendor');
 var moment = require('moment')
 
 module.exports = function(app) 
@@ -11,6 +12,9 @@ module.exports = function(app)
 	  console.log("DEBUG:/POST/Equipment:owner "+ req.body.owner);
 	  console.log("DEBUG:/POST/Equipment:startDate "+ req.body.startDate);
 	  var lpost
+	  
+
+	  Vendors.findOne({ 'vendorname': req.session.user }, 'password', function (err, vendor) {
 	  Equipments.findOne({}, {}, { sort: { 'Equipmentsnumber' : -1 } }, function(err, post) {
 	  if(post){
 	  	lpost = post.centername;
@@ -27,9 +31,9 @@ module.exports = function(app)
 	
 	  if (req.body.centername) {
 		 var thor = new Equipments({
-		 Equipmentname: req.body.centername,
+		 Equipmentname: req.body.Equipmentname,
 		 Equipmentnumber: lpost,
-		 vendornumber: req.body.vendornumber,
+		 vendornumber: vendor.vendornumber,
 		 EquipmentPrice: req.body.EquipmentPrice,
 		 manufacturer: req.body.manufacturer,
 		 Purchasedate: req.body.Purchasedate,
@@ -46,12 +50,13 @@ module.exports = function(app)
 	  }
 	  res.redirect('/session/user')
 	  });
+	    });
 	});
 	
 	
-	app.get('/equipment/create', function(req, res) {
+	app.post('/equipment/create', function(req, res) {
 		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
-		res.render('modules/registerequipment', {title: "Welcome to Gym Management" ,session: req.session});
+		res.render('modules/registerequipment', {title: "Welcome to Facility Management" ,session: req.session});
 
 	});
 	
