@@ -37,7 +37,6 @@ module.exports = function(app)
 		 password: req.body.password,
 		 phonenumber: req.body.mobilenumber,
 		 description: req.description
-			
 		});
 
 		thor.save(function(err, thor) {
