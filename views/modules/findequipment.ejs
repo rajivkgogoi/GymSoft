@@ -1,26 +1,25 @@
 <% layout( 'layout' ) -%>
 <h1 style="margin-bottom:0;" align=center ><%= title %></h1>
 <div id="header" style="background-color:LightSteelBlue ;">
-	<form action="/equipment/save" align=Left  method="post" accept-charset="utf-8" align=center>
+	<form action="/equipment/findresult" align=Left  method="post" accept-charset="utf-8" align=center>
 	 <fieldset>
 	  <p>
-	   <b>Equipmentname:</b><input type="text" size="100" placeholder="Mandatory Equipmentname...." name="Equipmentname" required />
+	   <b>Search:</b><input type="text" size="100" placeholder="Mandatory Equipmentname...." name="Equipmentname" required />
 	  Enter Equipment name Name(60 chars) 
 	  </p>
-	  <p> <b>:</b></p>
-	  <textarea rows="8" cols="100" name="address" placeholder="Enter Address here..."></textarea>
-	  Address (1000 chars)
-	  </p>
 	  
-	  <p>
-	   <b>Email:</b><input type="email" size="40" name="email" placeholder=" your email address..."/>
-	  Email(60 chars)
-	  </p>
+	  Advanced search
+	  
 	   <p>
 	   <b>EquipmentPrice:</b><input type="number" size="10" name="EquipmentPrice" placeholder=" EquipmentPrice..."/>
 	  contact number(60 chars)
-	  </p>  
-	 	  
+	  
+	   <select name="type">
+	<option value="Greater than">Customisation</option>
+	<option value="Less than">Core</option>
+	<option value="Equal than">Core</option>
+	</select>
+		 	  
 	  <p>
 	   <b>manufacturer :</b><input type="text" size="10" name="manufacturer" />
 	  Enter manufacturer(10 chars)
@@ -44,10 +43,7 @@
 	  </script>
 	    <b>Purchasedate:</b><input type="text"  id="datepicker1"  name="Purchasedate" />
 	 </p>
-	 <p> <b>Description :</b></p>
-	  <textarea rows="8" cols="100" name="description" placeholder="Enter description here..."></textarea>
-	  Description (1000 chars)
-	  </p>
-	 <input type="submit", value="Submit" />
+	
+	 <input type="submit", value="Search" />
 </div>
 
