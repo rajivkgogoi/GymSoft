@@ -1,4 +1,4 @@
-var Equipment = require('../data/models/Equipment');
+var Equipment = require('../data/models/gym_equipment');
 var moment = require('moment')
 
 module.exports = function(app) 
@@ -37,10 +37,9 @@ module.exports = function(app)
 		 manufacturer: req.body.manufacturer,
 		 Purchasedate: req.body.Purchasedate,
 		 Numberofunits:req.body.Numberofunits,
-		 description: req.body.description
-		 Image: String,
-		 Currentstatus: "Deployed",
-			
+		 description: req.body.description,
+		 //Image: String,
+		 Currentstatus: "Deployed"
 		});
 
 		thor.save(function(err, thor) {
