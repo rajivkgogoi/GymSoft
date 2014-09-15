@@ -69,9 +69,19 @@ module.exports = function(app)
 	});
 	
 	app.post('/equipment/findresult', function(req, res) {
-		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
-		res.render('modules/findequipment', {title: "Search results" ,session: req.session});
-
-	});
+		
+		if(req.body.Equipmentname){
+		 var regex = new RegExp(req.body.Equipmentname, "i"),
+		 query = { Equipmentname: regex };
+		}
+		
+		
+		if(query){
+		Equipment.find(query).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20).exec( function ( err, equipments ){
+		console.log("DEBUG:/SERach results"+ require('util').inspect(equipments, {depth:null}) );
+		res.render('modules/equipsearchview', {title: "Search results" ,session: req.session,ListProduct:equipments});
+		});
+		}
 	
+	});
 };

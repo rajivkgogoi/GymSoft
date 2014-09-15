@@ -9,15 +9,16 @@
 	  </p>
 	  
 	  Advanced search
-	  
+	  <input id="Advancedsearch" type="checkbox" value="1" onclick="unhide('hidden-input', this)">
+	  <div id="hidden-input" style="display:none">
 	   <p>
 	   <b>EquipmentPrice:</b><input type="number" size="10" name="EquipmentPrice" placeholder=" EquipmentPrice..."/>
 	  contact number(60 chars)
 	  
 	   <select name="type">
-	<option value="Greater than">Customisation</option>
-	<option value="Less than">Core</option>
-	<option value="Equal than">Core</option>
+	<option value="Greater than">Greater than</option>
+	<option value="Less than">Less than</option>
+	<option value="Equal than">Equal </option>
 	</select>
 		 	  
 	  <p>
@@ -43,7 +44,7 @@
 	  </script>
 	    <b>Purchasedate:</b><input type="text"  id="datepicker1"  name="Purchasedate" />
 	 </p>
-	
+	</div>
 	 <input type="submit", value="Search" />
 </div>
 
