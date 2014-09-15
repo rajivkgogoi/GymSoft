@@ -17,7 +17,7 @@ module.exports = function(app)
 	  Vendors.findOne({ 'vendorname': req.session.user }, 'vendornumber', function (err, vendor) {
 	  Equipment.findOne({}, {}, { sort: { 'Equipmentsnumber' : -1 } }, function(err, post) {
 	  if(post){
-	  	lpost = post.centername;
+	  	lpost = post.Equipmentnumber;
 	  }
 	  console.log( "DEBUG:/Equipment/save: last old Equipment Number" + post  + lpost)
 	  console.log( "DEBUG:/Equipment/save: vendor.vendornumber " + vendor.vendornumber)
