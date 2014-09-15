@@ -1,3 +1,0 @@
-DEBUG:/MODEL/vendor
-DEBUG:/MODEL/vendor
-DEBUG:/MODEL/vendor
