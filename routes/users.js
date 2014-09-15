@@ -12,11 +12,7 @@ module.exports = function(app)
 		// query db for all todo items
 				console.log("DEBUG:/GET/USERS:json Object is " + req.session.user);
 				res.render('modules/vendorviews', {title: 'Wellcome ' + req.session.user, session: req.session});
-			
-	
-		
-
-		 
+			 
 		
   });
 

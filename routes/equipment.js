@@ -69,6 +69,9 @@ module.exports = function(app)
 	});
 	
 	app.post('/equipment/findresult', function(req, res) {
+	
+		Equipment.find.
+	
 		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
 		res.render('modules/findequipment', {title: "Search results" ,session: req.session});
 
