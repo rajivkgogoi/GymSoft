@@ -9,7 +9,19 @@
 	  </p>
 	  
 	  Advanced search
-	  <input id="Advancedsearch" type="checkbox" value="1" onclick="unhide('hidden-input', this)">
+	  <script>function unhide(box) {
+
+    var chboxs = document.getElementsByName("c1");
+    var vis = "none";
+    for(var i=0;i<chboxs.length;i++) { 
+        if(chboxs[i].checked){
+         vis = "block";
+            break;
+        }
+    }
+    document.getElementById(box).style.display = vis;
+	}</script>
+	  <input name="Advancedsearch" type="checkbox" value="1" onclick="unhide('hidden-input')">
 	  <div id="hidden-input" style="display:none">
 	   <p>
 	   <b>EquipmentPrice:</b><input type="number" size="10" name="EquipmentPrice" placeholder=" EquipmentPrice..."/>
@@ -21,7 +33,7 @@
 	<option value="Equal than">Equal than</option>
 
 	</select>
-		 	  
+		  </p> 	  
 	  <p>
 	   <b>manufacturer :</b><input type="text" size="10" name="manufacturer" />
 	  Enter manufacturer(10 chars)

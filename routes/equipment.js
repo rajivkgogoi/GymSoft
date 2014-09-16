@@ -70,8 +70,8 @@ module.exports = function(app)
 	
 	app.post('/equipment/findresult', function(req, res) {
 
-		
-		if(req.body.Equipmentname){
+		console.log("DEBUG:/SERach Advance serach" +  req.body.Advancedsearch);
+		if(req.body.Equipmentname && (req.body.Advancedsearch != 1)){
 		 var regex = new RegExp(req.body.Equipmentname, "i"),
 		 query = { Equipmentname: regex };
 		}
