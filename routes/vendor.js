@@ -12,9 +12,9 @@ module.exports = function(app)
 	  console.log("DEBUG:/POST/vendor:owner "+ req.body.owner);
 	  console.log("DEBUG:/POST/vendor:startDate "+ req.body.startDate);
 	  var lpost
-	  Vendors.findOne({}, {}, { sort: { 'Vendorsnumber' : -1 } }, function(err, post) {
+	  Vendors.findOne({}, {}, { sort: { 'vendornumber' : -1 } }, function(err, post) {
 	  if(post){
-	  	lpost = post.centername;
+	  	lpost = post.vendornumber;
 	  }
 	  console.log( "DEBUG:/VENDOR/CREATE: last old Vendor Number" + post  + lpost)
 	  if(lpost)	
