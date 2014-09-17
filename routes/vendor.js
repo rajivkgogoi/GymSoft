@@ -68,23 +68,6 @@ module.exports = function(app)
 		}
 		
 		
-		// setup e-mail data with unicode symbols
-		var mailOptions = {
-			from: 'sanchayana2007@gmail.com', // sender address
-			to: 'lookpuk123@gmail.com', // list of receivers
-			subject: 'Hello ', // Subject line
-			text: 'Hello world ', // plaintext body
-			html: '<b>Hello world </b>' // html body
-		};
-		
-		// send mail with defined transport object
-		smtpTransport.sendMail(mailOptions, function(error, info){
-			if(error){
-				console.log(error);
-			}else{
-				console.log('Message sent: ' + info.response);
-			}
-		});
 		
 		smtpTransport.close(); // shut down the connection pool, no more messages.  Comment this line out to continue sending emails.
 			});
