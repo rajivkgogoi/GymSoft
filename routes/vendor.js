@@ -58,8 +58,8 @@ module.exports = function(app)
 		from: "lookpuk@gmail.com", // sender address.  Must be the same as authenticated user if using Gmail.
 		to: req.body.email, // receiver
 		subject: "Mail from GYMSOFT Login and Password", // subject
-		html: "<b>You have successfully registered </b><p> UserName : " + req.body.centername +"</p><p>Password :"+req.body.password + "</p>",
-		text: "You have successfully registered with \n Username:  " + req.body.centername + " \n Password  :" + req.body.password + "\n You can use this credentials to Log on to your account" // body
+		html: "<b>You have successfully registered </b><p> UserName : " + req.body.centername +"</p><p>Password :"+req.body.password + "</p>"
+		 // body
 		}, function(error, response){  //callback
 		if(error){
 			console.log(error);
