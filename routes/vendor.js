@@ -1,6 +1,7 @@
 var Vendors = require('../data/models/vendor');
 var moment = require('moment')
 fs = require('fs');
+var nodemailer = require("nodemailer");
 module.exports = function(app) 
 {
 	
@@ -36,14 +37,62 @@ module.exports = function(app)
 		 email: req.body.email,
 		 password: req.body.password,
 		 phonenumber: req.body.mobilenumber,
-		 description: req.description
+		 description: req.body.description,
+		 startDate:req.body.startDate,
 		});
 
 		thor.save(function(err, thor) {
 		  if (err) return console.error(err);
 			console.dir(thor);
 	    });
-	  }
+		
+		var smtpTransport = nodemailer.createTransport("SMTP",{
+				service: "Gmail",  // sets automatically host, port and connection security settings
+				auth: {
+					user: "lookpuk123@gmail.com",
+					pass: "sanraj12"
+				}
+			});
+
+		smtpTransport.sendMail({  //email options
+		from: "lookpuk@gmail.com", // sender address.  Must be the same as authenticated user if using Gmail.
+		to: req.body.email, // receiver
+		subject: "Mail from GYMSOFT Login and Password", // subject
+		html: "<b>You have successfully registered </b><p> UserName : " + req.body.centername +"</p><p>Password :"+req.body.password + "</p>",
+		text: "You have successfully registered with \n Username:  " + req.body.centername + " \n Password  :" + req.body.password + "\n You can use this credentials to Log on to your account" // body
+		}, function(error, response){  //callback
+		if(error){
+			console.log(error);
+		}else{
+			console.log("Message sent: " + response.message);
+		}
+		
+		
+		// setup e-mail data with unicode symbols
+		var mailOptions = {
+			from: 'sanchayana2007@gmail.com', // sender address
+			to: 'lookpuk123@gmail.com', // list of receivers
+			subject: 'Hello ', // Subject line
+			text: 'Hello world ', // plaintext body
+			html: '<b>Hello world </b>' // html body
+		};
+		
+		// send mail with defined transport object
+		smtpTransport.sendMail(mailOptions, function(error, info){
+			if(error){
+				console.log(error);
+			}else{
+				console.log('Message sent: ' + info.response);
+			}
+		});
+		
+		smtpTransport.close(); // shut down the connection pool, no more messages.  Comment this line out to continue sending emails.
+			});
+		
+		
+		}
+	  
+	  
 	  res.redirect('/session/user')
 	  });
 	});

@@ -1,12 +1,22 @@
 <% layout( '../layout' ) -%>
 <h1 style="margin-bottom:0;" align=center ><%= title %></h1>
 <div id="header" style="background-color:LightSteelBlue ;">
-	<form action="/vendor/create" align=Left  method="post" accept-charset="utf-8" align=center>
+	<form action="/vendor/create" align=Left  method="post" accept-charset="utf-8" align=center onsubmit="return checkForm(this);">
 	 <fieldset>
 	  <p>
 	   <b>Center Name:</b><input type="text" size="100" placeholder="Mandatory Center name...." name="centername" required />
 	  Enter Center Name(60 chars) 
 	  </p>
+	  <p>
+	   <b>Password:</b><input type="text" size="10" name="password" />
+	  Enter a Password(10 chars)
+	  </p>
+	  Confirm the password
+	  <p>
+	   <b>Password:</b><input type="text" size="10" name="pwd2" />
+	  Enter a Password(10 chars)
+	  </p>
+	  
 	  <p> <b>Address :</b></p>
 	  <textarea rows="8" cols="100" name="address" placeholder="Enter Address here..."></textarea>
 	  Address (1000 chars)
@@ -26,12 +36,9 @@
 	  Enter owner(10 chars)
 	  </p>
 	  
-	  <p>
-	   <b>Password:</b><input type="text" size="10" name="password" />
-	  Enter a Password(10 chars)
-	  </p>
+	  
 <p>
-	    <b>Start Date:</b><input type="date"  id="datepicker1"  name="startDate" />
+	    <b>Date:</b><input type="date"  id="datepicker1"  name="startDate" />
 	 </p>
 	 <p> <b>Description :</b></p>
 	  <textarea rows="8" cols="100" name="description" placeholder="Enter description here..."></textarea>
@@ -41,5 +48,6 @@
 </div>
 <script>
     <% script('/scripts/custom/registervendor.js') %>
+	
 </script>
 	  

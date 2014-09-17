@@ -7,6 +7,7 @@ vendornumber: { type: Number, default: 1 },
 address: String,
 email: String,
 password: String,
+startDate: Date,
 phonenumber: { type: Number, default: 1 },
 description: String,
 

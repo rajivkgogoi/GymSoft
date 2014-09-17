@@ -2,3 +2,12 @@ body {
     font: 14px Helvetica, Arial, sans-serif;
     color: #808080;
 }
+
+}
+#footer {
+	margin-top: 150px; /* negative value of footer height */
+	height: 150px;
+	clear:both;
+	
+    bottom: 0;
+	} 
