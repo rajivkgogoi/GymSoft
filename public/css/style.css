@@ -4,10 +4,23 @@ body {
 }
 
 }
-#footer {
+footer {
 	margin-top: 150px; /* negative value of footer height */
 	height: 150px;
 	clear:both;
-	
+	background-color: #97B094;
     bottom: 0;
 	} 
+h1 {
+    background-color:;
+}
+
+
+
+#hrr {
+background-color:LightSteelBlue;
+}
+
+p {
+    background-color: ;
+}

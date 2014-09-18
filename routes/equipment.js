@@ -49,7 +49,7 @@ module.exports = function(app)
 			console.dir(thor);
 	    });
 	  }
-	  res.redirect('/session/user')
+	  res.render('modules/vendorviews', {title: 'Wellcome ' + req.session.user, session: req.session});
 	  });
 	    });
 	});
@@ -64,16 +64,17 @@ module.exports = function(app)
 	
 	app.post('/equipment/findpage', function(req, res) {
 		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
-		res.render('modules/findequipment', {title: "Search and MOdify Equipments" ,session: req.session});
+		res.render('modules/findequipment', {title: "Search and Modify Equipments" ,session: req.session,ListProduct:null});
 
 	});
 	
 	app.post('/equipment/findresult', function(req, res) {
 		var random = 11111;
 		console.log("DEBUG:/SERach Advance serach" +  req.body.Advancedsearch);
+		 Vendors.findOne({ 'vendorname': req.session.user }, 'vendornumber', function (err, vendor) {
 		if(req.body.Equipmentname && (req.body.Advancedsearch != 1)){
 		 var regex = new RegExp(req.body.Equipmentname, "i"),
-		 query = { Equipmentname: regex };
+		 query = { $and : [{ Equipmentname: regex },{ vendornumber:vendor.vendornumber}]};
 		}
 		//we are at advance search
 		else 
@@ -101,47 +102,51 @@ module.exports = function(app)
 		switch(random)
 		{
 		case 11110:
-			query = { EquipmentPrice: { $gt : req.body.EquipmentPrice}};
+			query = { $and : [{ EquipmentPrice: { $gt : req.body.EquipmentPrice}},{ vendornumber:vendor.vendornumber}]};
 			break;
 		case 11101:
-			query = { EquipmentPrice: { $lt : req.body.EquipmentPrice}};
+			query = { $and : [{ EquipmentPrice: { $lt : req.body.EquipmentPrice}},{ vendornumber:vendor.vendornumber}]};
 			break;
 		case 11011:
-			query = { EquipmentPrice:  req.body.EquipmentPrice};
+			query = { $and : [{EquipmentPrice:  req.body.EquipmentPrice},{ vendornumber:vendor.vendornumber}]};
 			break;			
 		case 10111:
 			var regex = new RegExp(req.body.manufacturer, "i");
 			console.log("DEBUG:/SERach Advance search manufacturer" +  req.body.manufacturer);
-			query = { manufacturer: regex};	
+			query = { $and : [{manufacturer: regex},{ vendornumber:vendor.vendornumber}]};	
 			break;
 		case 10110:
 			var regex = new RegExp(req.body.manufacturer, "i"),
-			query = { $and : [{  manufacturer: regex },{EquipmentPrice: { $gt : req.body.EquipmentPrice}}]};
+			query = { $and : [{  manufacturer: regex },{EquipmentPrice: { $gt : req.body.EquipmentPrice}},{ vendornumber:vendor.vendornumber}]};
 			break;
 		case 10101:
 			var regex = new RegExp(req.body.manufacturer, "i"),
-			query = { $and : [{  manufacturer: regex },{EquipmentPrice: { $lt : req.body.EquipmentPrice}}]};
+			query = { $and : [{  manufacturer: regex },{EquipmentPrice: { $lt : req.body.EquipmentPrice}},{ vendornumber:vendor.vendornumber}]};
 			break;
 		case 10011:
 			var regex = new RegExp(req.body.manufacturer, "i"),
-			query = { $and : [{  manufacturer: regex },{EquipmentPrice: req.body.EquipmentPrice}]};
+			query = { $and : [{  manufacturer: regex },{EquipmentPrice: req.body.EquipmentPrice},{ vendornumber:vendor.vendornumber}]};
 			break;
 		case 1111:
 			var regex = new RegExp(req.body.manufacturer, "i"),
-			query = { $and : [{  manufacturer: regex },{Purchasedate: req.body.Purchasedate}]};
+			query = { $and : [{  manufacturer: regex },{Purchasedate: req.body.Purchasedate},{ vendornumber:vendor.vendornumber}]};
 			break;
 			
 		}
 		
 		if(query){
 		console.log("DEBUG:/SERach Advance search QUERYr" +  require('util').inspect(query, {depth:null}));
+		 Vendors.findOne({ 'vendorname': req.session.user }, 'vendornumber', function (err, vendor) {
 		Equipment.find(query).exec( function ( err, equipments ){
 		//Equipment.find(query).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20).exec( function ( err, equipments ){
 		console.log("DEBUG:/SERach results"+ require('util').inspect(equipments, {depth:null}) );
-		res.render('modules/equipsearchview', {title: "Search results" ,session: req.session,ListProduct:equipments});
+		res.render('modules/findequipment', {title: "Search Results" ,session: req.session,ListProduct:equipments});
 		});
-		}
-
+		
+		
+	});
+	}
 	
+	});
 	});
 };

@@ -1,11 +1,12 @@
-<% layout( 'layout' ) -%>
+<% layout( '../layout' ) -%>
 <h1 style="margin-bottom:0;" align=center ><%= title %></h1>
-<div id="header" style="background-color:LightSteelBlue ;">
+<link rel="stylesheet" href="style.css">
+<div id="hrr" >
 	<form action="/equipment/findresult" align=Left  method="post" accept-charset="utf-8" align=center>
 	 <fieldset>
 	  <p>
 	   <b>Search:</b><input type="text" size="100" placeholder="Mandatory Equipmentname...." name="Equipmentname" />
-	  Enter Equipment name Name(60 chars) 
+	  Enter Equipment  Name(60 chars) 
 	  </p>
 	  
 	  Advanced search
@@ -25,8 +26,7 @@
 	  <div  style="display:flex">
 	   <p>
 	   <b>EquipmentPrice:</b><input type="number" size="10" name="EquipmentPrice" placeholder=" EquipmentPrice..."/>
-	  contact number(60 chars)
-	  
+	  Price Options	  
 	   <select name="type">
 	<option value="Greater than">Greater than</option>
 	<option value="Less than">Less than</option>
@@ -36,24 +36,75 @@
 		  </p> 	  
 	  <p>
 	   <b>manufacturer :</b><input type="text" size="10" name="manufacturer" />
-	  Enter manufacturer(10 chars)
+	  
 	  </p>
 	  
-	 	  
-	   <p>
-	  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	  <link rel="stylesheet" href="/resources/demos/style.css">
-	  <script>
-	  $(function() {
-		$( "#datepicker1" ).datepicker();
-		$( "#datepicker2" ).datepicker();
-	  });
-	  </script>
-	    <b>Purchasedate:</b><input type="text"  id="datepicker1"  name="Purchasedate" />
+	    <b>Purchasedate:</b><input type="date"  id="datepicker1"  name="Purchasedate" />
 	 </p>
 	</div>
 	 <input type="submit", value="Search" />
 </div>
+<div id =table>
+<h1 style="margin-bottom:0;" align=left ></h1>
 
+   <style>
+		table,th,td
+		{
+		border:1px solid black;
+		border-collapse:collapse;
+		}
+		th,td
+		{
+		padding:5px;
+		}
+		</style>
+		
+		<% if( ListProduct ){ %>
+	<table style="width:600px">
+	<tr>
+	<!-- Colgroup -->
+	   <colgroup>
+	      <col class="vzebra-odd"> 
+	      <col class="vzebra-even">
+	    
+	   </colgroup>
+
+	  <th bgcolor=BurlyWood ><b>Equipment name</b></th>
+	  <th bgcolor=Cornsilk >Manufacturer</th>
+	  <th bgcolor=DarkGray >Purchase Date</th>
+	
+	</tr>
+	<% ListProduct.forEach( function ( euipment ){ %>
+		<tr>
+		 
+		<td width="70%"><%=euipment.Equipmentname%>
+	    <div align=right> 
+	   <form align=right method="post" action="/feature/info">
+		<input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%= euipment.Equipmentnumber %> />
+	  	<input type="submit", value="view" />
+		 </form>
+		 
+		 <form align=left  method="post" action="/feature/delete">
+	  <input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%=euipment.Equipmentnumber %> />
+	  <input type="submit", value="view" title="View Equipment" />
+			</form>
+			</div>
+	   	   </td> 
+	   <td width="15%"><%=euipment.manufacturer%></td>
+	   <td width="15%"><%=moment(euipment.Startdate).format('MM/DD/YYYY')%></td>
+	   
+	</tr>
+	<% }); %>
+	
+	</table>
+		<% }); %>
+</div>  
+
+
+
+
+<script>
+    <% script('/scripts/custom/registervendor.js') %>
+	
+</script>
+	  
