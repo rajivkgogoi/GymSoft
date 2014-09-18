@@ -72,32 +72,36 @@
 	  <th bgcolor=BurlyWood ><b>Equipment name</b></th>
 	  <th bgcolor=Cornsilk >Manufacturer</th>
 	  <th bgcolor=DarkGray >Purchase Date</th>
+	  <th bgcolor=Cornsilk >Price Rs</th>
+	  <th bgcolor=BurlyWood ><b>Image</b></th>
 	
 	</tr>
 	<% ListProduct.forEach( function ( euipment ){ %>
 		<tr>
 		 
-		<td width="70%"><%=euipment.Equipmentname%>
+		<td width="50%"><%=euipment.Equipmentname%>
 	    <div align=right> 
-	   <form align=right method="post" action="/feature/info">
+	   <form align=right method="post" action="/equipment/details">
 		<input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%= euipment.Equipmentnumber %> />
-	  	<input type="submit", value="view" />
+	  	<input type="submit", value="view Details" />
 		 </form>
 		 
-		 <form align=left  method="post" action="/feature/delete">
+		 <form align=left  method="post" action="/equipment/update">
 	  <input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%=euipment.Equipmentnumber %> />
-	  <input type="submit", value="view" title="View Equipment" />
+	  <input type="submit", value="Update" title="Update Equipment" />
 			</form>
 			</div>
 	   	   </td> 
 	   <td width="15%"><%=euipment.manufacturer%></td>
-	   <td width="15%"><%=moment(euipment.Startdate).format('MM/DD/YYYY')%></td>
+	   <td width="15%"><%=moment(euipment.Purchasedate).format('MM/DD/YYYY')%></td>
+	   <td width="15%"><%=euipment.EquipmentPrice%></td>
+	   <td width="5%"></td>
 	   
 	</tr>
 	<% }); %>
 	
 	</table>
-		<% }); %>
+		<% } %>
 </div>  
 
 

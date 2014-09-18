@@ -62,12 +62,56 @@ module.exports = function(app)
 	});
 	
 	
-	app.post('/equipment/findpage', function(req, res) {
+	app.post('/equipment/update', function(req, res) {
 		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
-		res.render('modules/findequipment', {title: "Search and Modify Equipments" ,session: req.session,ListProduct:null});
+		res.render('modules/updateequipmentform', {title: "Update Equipments" ,session: req.session,Equipmentid:req.body.Equipmentnumber,moment:moment});
 
 	});
+	app.post('/equipment/updatesave', function(req, res) {
+		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
+		Equipment.findOne({Equipmentnumber: req.body.Equipmentnumber}, 'Equipmentnumber', function (err,equipment) {
+		 if (equipment) {
+		 if(req.body.Equipmentname)
+			equipment.Equipmentname= req.body.Equipmentname;
+		 if(req.body.EquipmentPrice)
+			equipment.EquipmentPrice= req.body.EquipmentPrice;
+		 if(req.body.manufacturer)
+			equipment.manufacturer= req.body.manufacturer;
+		 if(req.body.Purchasedate)
+		 equipment.Purchasedate= req.body.Purchasedate;
+		 if(req.body.Numberofunits)
+		 equipment.Numberofunits=req.body.Numberofunits;
+		 if(req.body.description)
+		 equipment.description= req.body.description;
+		 if(req.body.Image)
+		 equipment.Image= req.body.Image;
+		 equipment.Currentstatus= "Deployed";
+		equipment.save(function(err, thor) {
+		  if (err) return console.error(err);
+			console.dir(equipment);
+	    });
+			 
+		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
+		res.render('modules/detailsequipment', {title: "Details Equipments" ,session: req.session,ListProduct:null,moment:moment});
+		}
+	});
+		
+	});
 	
+	app.post('/equipment/details', function(req, res) {
+	Equipment.findOne({Equipmentnumber: req.body.Equipmentnumber }, 'password', function (err,equipment) {
+		 if (equipment) {
+		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
+		res.render('modules/detailsequipment', {title: "Details Equipments" ,session: req.session,ListProduct:null,moment:moment});
+		}
+	});
+	});
+	
+	app.post('/equipment/findpage', function(req, res) {
+		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
+		res.render('modules/findequipment', {title: "Search and Modify Equipments" ,session: req.session,ListProduct:null,moment:moment});
+
+	});
 	app.post('/equipment/findresult', function(req, res) {
 		var random = 11111;
 		console.log("DEBUG:/SERach Advance serach" +  req.body.Advancedsearch);
@@ -140,7 +184,7 @@ module.exports = function(app)
 		Equipment.find(query).exec( function ( err, equipments ){
 		//Equipment.find(query).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20).exec( function ( err, equipments ){
 		console.log("DEBUG:/SERach results"+ require('util').inspect(equipments, {depth:null}) );
-		res.render('modules/findequipment', {title: "Search Results" ,session: req.session,ListProduct:equipments});
+		res.render('modules/findequipment', {title: "Search Results" ,session: req.session,ListProduct:equipments,moment:moment});
 		});
 		
 		

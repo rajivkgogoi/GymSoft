@@ -1,0 +1,39 @@
+<% layout( '../layout.ejs' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<link rel="stylesheet" href="style.css">
+
+<div id="hrr" >
+	<form action="/equipment/updatesave" align=Left  method="post" accept-charset="utf-8" align=center>
+	 <fieldset>
+	  <p>
+	   <b>Equipmentname:</b><input type="text" size="100" placeholder="Mandatory Equipmentname...." name="Equipmentname" />
+	  Enter Equipment name Name(60 chars) 
+	  </p>
+	 
+	   <p>
+	   <b>EquipmentPrice:</b><input type="number" size="10" name="EquipmentPrice" placeholder=" EquipmentPrice..."/>
+	  contact number(60 chars)
+	  </p>  
+	 	  <input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%=Equipmentid %> />
+	  <p>
+	   <b>manufacturer :</b><input type="text" size="10" name="manufacturer" />
+	  Enter manufacturer(10 chars)
+	  </p>
+	  
+	  <b>Purchasedate:</b><input type="date"  id="datepicker1"  name="Purchasedate" />
+	 </p>
+	 <p> <b>Description :</b></p>
+	  <textarea rows="8" cols="100" name="description" placeholder="Enter description here..."></textarea>
+	  Description (1000 chars)
+	  </p>
+	 <input type="submit", value="Submit" />
+</div>
+
+
+
+
+
+<script>
+    <% script('/scripts/custom/registervendor.js') %>
+	
+</script>

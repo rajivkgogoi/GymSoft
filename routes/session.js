@@ -48,7 +48,8 @@ module.exports = function(app)
 	
 	app.post('/session/resetpassword', function(req, res) {
 	console.log("DEBUG:/POST/SESSION:Check the Request and password");
-	Vendors.findOne({ $and : [{  vendorname: req.body.username },{phonenumber: req.body.mobilenumber}]}, 'password', function (err, vendor) {
+	Vendors.findOne({ $and : [{  vendorname: req.body.username },{phonenumber: req.body.mobilenumber}]}, 'password',
+	function (err, vendor) {
 		  	
 		if (vendor) {
 		console.log("DEBUG:Password Reset vendor matched"  + req.body.username + req.body.password);
