@@ -63,13 +63,14 @@ module.exports = function(app)
 	
 	
 	app.post('/equipment/update', function(req, res) {
-		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
-		res.render('modules/updateequipmentform', {title: "Update Equipments" ,session: req.session,Equipmentid:req.body.Equipmentnumber,moment:moment});
-
+		Equipment.findOne({Equipmentnumber: req.body.Equipmentnumber},function (err,equipment) {
+		console.log("DEBUG:/GET/SESSION_USER:Inside Update Call " + require('util').inspect(equipment, {depth:null}));
+		res.render('modules/updateequipmentform', {title: "Update Equipments" ,session: req.session,Equipment:equipment,moment:moment});
+	});
 	});
 	app.post('/equipment/updatesave', function(req, res) {
 		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
-		Equipment.findOne({Equipmentnumber: req.body.Equipmentnumber}, 'Equipmentnumber', function (err,equipment) {
+		Equipment.findOne({Equipmentnumber: req.body.Equipmentnumber},  function (err,equipment) {
 		 if (equipment) {
 		 if(req.body.Equipmentname)
 			equipment.Equipmentname= req.body.Equipmentname;
@@ -92,7 +93,7 @@ module.exports = function(app)
 	    });
 			 
 		console.log("DEBUG:/GET/SESSION_USER:Inside session This will Render Views from /views/session/user");
-		res.render('modules/detailsequipment', {title: "Details Equipments" ,session: req.session,ListProduct:null,moment:moment});
+		res.render('modules/vendorviews', {title: "Details Equipments" ,session:req.session,ListProduct:null,moment:moment});
 		}
 	});
 		

@@ -1,26 +1,27 @@
 <% layout( '../layout.ejs' ) -%>
 <h1 style="margin-bottom:0;" align=center ><%= title %></h1>
 <link rel="stylesheet" href="style.css">
-
+*** The Fields will retain its previous values if left Empty
 <div id="hrr" >
 	<form action="/equipment/updatesave" align=Left  method="post" accept-charset="utf-8" align=center>
 	 <fieldset>
 	  <p>
 	   <b>Equipmentname:</b><input type="text" size="100" placeholder="Mandatory Equipmentname...." name="Equipmentname" />
-	  Enter Equipment name Name(60 chars) 
+	  <%=Equipment.Equipmentname%> 
 	  </p>
 	 
 	   <p>
 	   <b>EquipmentPrice:</b><input type="number" size="10" name="EquipmentPrice" placeholder=" EquipmentPrice..."/>
-	  contact number(60 chars)
+	  <%=Equipment.EquipmentPrice%>
 	  </p>  
-	 	  <input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%=Equipmentid %> />
+	 	  <input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%=Equipment.Equipmentnumber %> />
 	  <p>
 	   <b>manufacturer :</b><input type="text" size="10" name="manufacturer" />
-	  Enter manufacturer(10 chars)
+	  <%=Equipment.manufacturer%> 
 	  </p>
 	  
 	  <b>Purchasedate:</b><input type="date"  id="datepicker1"  name="Purchasedate" />
+	  <%=Equipment.Purchasedate%> 
 	 </p>
 	 <p> <b>Description :</b></p>
 	  <textarea rows="8" cols="100" name="description" placeholder="Enter description here..."></textarea>
