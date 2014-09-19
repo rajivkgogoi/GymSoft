@@ -1,0 +1,114 @@
+<% layout( '../layout' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<link rel="stylesheet" href="style.css">
+<div id="hrr" >
+	<form action="/plan/findresult" align=Left  method="post" accept-charset="utf-8" align=center>
+	 <fieldset>
+	  <p>
+	   <b>Search:</b><input type="text" size="100" placeholder="Mandatory planname...." name="planname" />
+	  Enter plan  Name(60 chars) 
+	  </p>
+	  
+	  Advanced search
+	  <script>function unhide(box) {
+
+    var chboxs = document.getElementsByName("c1");
+    var vis = "none";
+    for(var i=0;i<chboxs.length;i++) { 
+        if(chboxs[i].checked){
+         vis = "flex";
+            break;
+        }
+    }
+    document.getElementById(box).style.display = vis;
+	}</script>
+	  <input name="Advancedsearch" type="checkbox" value="1" onclick="unhide('hidden-input')">
+	  <div  style="display:flex">
+	   <p>
+	   <b>planPrice:</b><input type="number" size="10" name="planPrice" placeholder=" planPrice..."/>
+	  Price Options	  
+	   <select name="type">
+	<option value="Greater than">Greater than</option>
+	<option value="Less than">Less than</option>
+	<option value="Equal than">Equal than</option>
+
+	</select>
+		  </p> 	  
+	  <p>
+	   <b>Duration :</b><input type="text" size="10" name="Duration" />
+	  
+	  </p>
+	  
+	    <b>startDate:</b><input type="date"  id="datepicker1"  name="startDate" />
+	 </p>
+	</div>
+	 <input type="submit", value="Search" />
+</div>
+<div id =table>
+<h1 style="margin-bottom:0;" align=left ></h1>
+
+   <style>
+		table,th,td
+		{
+		border:1px solid black;
+		border-collapse:collapse;
+		}
+		th,td
+		{
+		padding:5px;
+		}
+		</style>
+		
+		<% if( ListProduct ){ %>
+	<table style="width:600px">
+	<tr>
+	<!-- Colgroup -->
+	   <colgroup>
+	      <col class="vzebra-odd"> 
+	      <col class="vzebra-even">
+	    
+	   </colgroup>
+
+	  <th bgcolor=BurlyWood ><b>plan name</b></th>
+	  <th bgcolor=Cornsilk >Manufacturer</th>
+	  <th bgcolor=DarkGray >Purchase Date</th>
+	  <th bgcolor=Cornsilk >Price Rs</th>
+	  <th bgcolor=BurlyWood ><b>Image</b></th>
+	
+	</tr>
+	<% ListProduct.forEach( function ( euipment ){ %>
+		<tr>
+		 
+		<td width="50%"><%=euipment.planname%>
+	    <div align=right> 
+	   <form align=right method="post" action="/plan/details">
+		<input type="hidden"  name="plannumber" id="plannumber" value=<%= euipment.plannumber %> />
+	  	<input type="submit", value="view Details" />
+		 </form>
+		 
+		 <form align=left  method="post" action="/plan/update">
+	  <input type="hidden"  name="plannumber" id="plannumber" value=<%=euipment.plannumber %> />
+	  <input type="submit", value="Update" title="Update plan" />
+			</form>
+			</div>
+	   	   </td> 
+	   <td width="15%"><%=euipment.Duration%></td>
+	   <td width="15%"><%=moment(euipment.startDate).format('MM/DD/YYYY')%></td>
+	   <td width="15%"><%=euipment.planPrice%></td>
+	   <td width="5%"></td>
+	   
+	</tr>
+	<% }); %>
+	
+	</table>
+		<% } %>
+</div>  
+
+
+
+
+<script>
+    <% script('/scripts/custom/registervendor.js') %>
+	
+</script>
+	  

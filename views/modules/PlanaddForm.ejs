@@ -1,0 +1,41 @@
+<% layout( '../layout' ) -%>
+<link rel="stylesheet" href="style.css">
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+
+<div id="hrr" >
+	<form action="/plan/save" align=Left  method="post" accept-charset="utf-8" align=center>
+	 <fieldset>
+	  <p>
+	   <b>planname:</b><input type="text" size="100" placeholder="Mandatory planname...." name="planname" required />
+	  Enter plan name Name(60 chars) 
+	  </p>
+	 
+	   <p>
+	   <b>planPrice:</b><input type="number" size="10" name="planPrice" placeholder=" planPrice..."/>
+	  contact number(60 chars)
+	  </p>  
+	 	  
+	  <p>
+	   <b>Duration :</b><input type="text" size="10" name="Duration" />
+	  Enter Duration(10 chars)
+	  </p>
+	   <p>
+	   <b>MaxEnrolls :</b><input type="text" size="10" name="MaxEnrolls" />
+	  Enter MaxEnrolls(10 chars)
+	  </p>
+	  <p>
+	   <b>timings :</b><input type="text" size="10" name="timings" />
+	  Enter timings(10 chars)
+	  </p>
+	  <b>startDate:</b><input type="date"  id="datepicker1"  name="startDate" />
+	 </p>
+	 <p> <b>Description :</b></p>
+	  <textarea rows="8" cols="100" name="description" placeholder="Enter description here..."></textarea>
+	  Description (1000 chars)
+	  </p>
+	 <input type="submit", value="Submit" />
+</div>
+
+<script>
+    <% script('/scripts/custom/registervendor.js') %>
+</script>

@@ -1,0 +1,47 @@
+<% layout( '../layout.ejs' ) -%>
+<h1 style="margin-bottom:0;" align=center ><%= title %></h1>
+<link rel="stylesheet" href="style.css">
+*** The Fields will retain its previous values if left Empty
+<div id="hrr" >
+	<form action="/plan/updatesave" align=Left  method="post" accept-charset="utf-8" align=center>
+	 <fieldset>
+	  <p>
+	   <b>planname:</b><input type="text" size="100" placeholder="Mandatory planname...." name="planname" />
+	  <%=plan.planname%> 
+	  </p>
+	 
+	   <p>
+	   <b>planPrice:</b><input type="number" size="10" name="planPrice" placeholder=" planPrice..."/>
+	  <%=plan.planPrice%>
+	  </p>  
+	 	  <input type="hidden"  name="plannumber" id="plannumber" value=<%=plan.plannumber %> />
+	  <p>
+	   <b>Duration :</b><input type="text" size="10" name="Duration" />
+	  <%=plan.Duration%> 
+	  </p>
+	  
+	  <b>startDate:</b><input type="date"  id="datepicker1"  name="startDate" />
+	  <%=plan.startDate%> 
+	 </p>
+	  <b>MaxEnrolls :</b><input type="text" size="10" name="MaxEnrolls" />
+	  Enter MaxEnrolls(10 chars)
+	  </p>
+	  <p>
+	   <b>timings :</b><input type="text" size="10" name="timings" />
+	  Enter timings(10 chars)
+	  </p>
+	 <p> <b>Description :</b></p>
+	  <textarea rows="8" cols="100" name="description" placeholder="Enter description here..."></textarea>
+	  Description (1000 chars)
+	  </p>
+	 <input type="submit", value="Submit" />
+</div>
+
+
+
+
+
+<script>
+    <% script('/scripts/custom/registervendor.js') %>
+	
+</script>
