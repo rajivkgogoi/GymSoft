@@ -24,17 +24,7 @@ build/Release
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
 *.bak
-public/lib/angular/bower.json
-public/lib/angular-bootstrap/.bower.json
-public/lib/angular-bootstrap/bower.json
-public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js
-public/lib/angular-bootstrap/ui-bootstrap.js
-public/lib/angular-bootstrap/ui-bootstrap.min.js
-public/lib/angular/.bower.json
-public/lib/angular/README.md
-public/lib/angular/angular-csp.css
-public/lib/angular/angular.js
-public/lib/angular/angular.min.js
-public/lib/angular/angular.min.js.gzip
-public/lib/angular/angular.min.js.map
-public/lib/angular-bootstrap/ui-bootstrap-tpls.js
+public/lib
+
+# iisnode exclude
+iisnode

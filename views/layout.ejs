@@ -17,13 +17,49 @@
 	    <link href="/css/style.css" rel="stylesheet"/>
     </head>
 <body>
-    <div align=bottom>
-        Welcome to Gym Master.
-        <%- body %>
-    </div>
-<div id="footer">
-Copyright 2014 A lookpuk product
-</div>
+    <!--Header-->
+    <header id="header">
+      <div class="container">
+        <div class="span6"> <a href="#"><img class="logo" src="img/logo.jpg"  alt="LookPook"/></a>
+        <h1 class="caption">Welcome to Gym Master.</h1>
+        </div>
+	    <div class="pull-right">
+          <ul>
+            <li><a href="#" name="signIn">Log in</a></li>
+            <li><a href="#" name="register">New User</a></li>
+          </ul>      
+        </div>
+      </div>
+    </header>
+    <!--Nav-->
+    <section id="nav">
+	    <div class="container">
+	    <nav>
+          <ul>
+            <li><a href="#" name="women">VENDOR</a></li>
+            <li><a href="#" name="men">USER</a></li>
+            <li><a href="#" name="collections">ATTENDANCE</a></li>
+		    <li><a href="#" name="specials">ADMIN</a></li>
+          </ul>
+	    </nav>
+	    </div>
+    </section>
+    <!--Banner-->
+    <section id="banner">
+    <div class="container"> 
+       	<%- body %>			
+    </div>   
+    </section>
+<footer id="footer" class="footer2">
+  <div class="container">
+	      <ul>
+	      <li class="nobdr"><span>2014 Gymsoft, A LookPuk Product</span></li>
+	      <li><a href="#">Terms &amp; Conditions</a></li>
+	      <li><a href="#">Privacy Policy</a></li>
+	      <li><a href="#">Contact Us</a></li>      
+	      </ul>
+      </div>
+</footer>
 	
 	
 </body>
