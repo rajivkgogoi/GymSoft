@@ -11,6 +11,7 @@ startDate: Date,
 address: String,
 attachment: String,
 level: String,
+status: String,
 });
 var P = mongoose.model('user', userSchema);
 module.exports = P;

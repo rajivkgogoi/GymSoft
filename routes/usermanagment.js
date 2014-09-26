@@ -45,6 +45,7 @@ module.exports = function(app)
 		 Image: req.body.Image,
 		 level: req.body.level,
 		 startDate:req.body.startDate,
+		 status: "Active",
 		});
 
 		thor.save(function(err, thor) {
@@ -87,6 +88,8 @@ module.exports = function(app)
 		 user.address= req.body.address;
 		 if(req.body.Image)
 		 user.Image= req.body.Image;
+		 if(req.body.status)
+		 user.Image= req.body.status;
 		  if(req.body.level)
 		 user.level= req.body.level;
 		user.save(function(err, thor) {
@@ -184,7 +187,7 @@ module.exports = function(app)
 		
 		if(query){
 		console.log("DEBUG:/SERach Advance search QUERYr" +  require('util').inspect(query, {depth:null}));
-		 Vendors.findOne({ 'vendorname': req.session.user }, 'vendornumber', function (err, vendor) {
+		
 		user.find(query).exec( function ( err, users ){
 		//user.find(query).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20).exec( function ( err, users ){
 		console.log("DEBUG:/SERach results"+ require('util').inspect(users, {depth:null}) );
@@ -192,7 +195,6 @@ module.exports = function(app)
 		});
 		
 		
-	});
 	}
 	
 	});
