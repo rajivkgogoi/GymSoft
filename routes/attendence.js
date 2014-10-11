@@ -33,16 +33,10 @@ module.exports = function(app)
 	
 	  if (req.body.attendencename) {
 		 var thor = new attendence({
-		 attendencename: req.body.attendencename,
+		 usernumber: req.body.usernumber,
 		 attendencenumber: lpost,
 		 vendornumber: vendor.vendornumber,
-		 attendencePrice: req.body.attendencePrice,
-		 manufacturer: req.body.manufacturer,
-		 Purchasedate: req.body.Purchasedate,
-		 Numberofunits:req.body.Numberofunits,
-		 description: req.body.description,
-		 Image: req.body.Image,
-		 Currentstatus: "Deployed",
+		
 		});
 
 		thor.save(function(err, thor) {
@@ -103,11 +97,12 @@ module.exports = function(app)
 	app.post('/attendence/display', function(req, res) {
 	Vendors.findOne({ 'vendorname': req.session.user }, 'vendornumber', function (err, vendor) {
 	user.find({ $and : [{  status:"Active" },{ vendornumber:vendor.vendornumber}]}).exec( function ( err, users ){
-	attendence.find(vendornumber: vendornumber).exec( function ( err, attendees ){
+	attendence.find({'vendornumber': vendor.vendornumber}).exec( function ( err, attendees ){
 	console.log("DEBUG:/GET/Attendence:");
 	res.render('modules/attendenceview', {title: "Details of attendences" ,session:req.session,Listuser:user,
 	Listattendence:attendees,moment:moment});
 	
+	});
 	});
 	});
 	});

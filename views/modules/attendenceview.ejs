@@ -1,7 +1,74 @@
 <% layout( '../layout' ) -%>
 	<font size="3"> <b> Hello <%=session.user%> whats Up </b>  </font>
 <div id="hrr" >
+
+<script language="javascript">
+<%
+var DayOfWeek;
+function fncDayOfWeek() 
+{ 
+var stDate; 
+var now; 
+var assoc= new Array(7); 
+assoc[0]="Sunday"; 
+assoc[1]="Monday"; 
+assoc[2]="Tuesday"; 
+assoc[3]="Wednesday"; 
+assoc[4]="Thursday"; 
+assoc[5]="Friday"; 
+assoc[6]="Saturday"; 
+now= new Date(); 
+stDate=now.getDay(); 
+return(assoc[stDate]); 
+}
+
+document.write('<B>Current Day of the Week:</b>' + DayOfWeek);
+ %>
+</script>
+
+
+
+
+	<% if( Listuser ){ %>
+	<table style="width:600px">
+	<tr>
+	<!-- Colgroup -->
+	   <colgroup>
+	      <col class="vzebra-odd"> 
+	      <col class="vzebra-even">
+	    
+	   </colgroup>
+
+	  <th bgcolor=BurlyWood ><b>name</b></th>
+	  <th bgcolor=Cornsilk >date</th>
 	
+	
+	</tr>
+	<% Listuser.forEach( function ( user ){ %>
+		<tr>
+		 
+		<td width="50%"><%=user.username%>
+	    <div align=right> 
+	   <form align=right method="post" action="/equipment/details">
+		<input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%= euipment.Equipmentnumber %> />
+	  	<input type="submit", value="view Details" />
+		 </form>
+		 
+		 <form align=left  method="post" action="/equipment/update">
+	  <input type="hidden"  name="Equipmentnumber" id="Equipmentnumber" value=<%=euipment.Equipmentnumber %> />
+	  <input type="submit", value="Update" title="Update Equipment" />
+			</form>
+			</div>
+	   	   </td> 
+	   <td width="15%"><%=euipment.manufacturer%></td>
+	   <td width="15%"><%=moment(euipment.Purchasedate).format('MM/DD/YYYY')%></td>
+	   <td width="15%"><%=euipment.EquipmentPrice%></td>
+	   <td width="5%"></td>
+	   
+	</tr>
+	<% }); %>
+	
+	</table>
 
 
 </div>
